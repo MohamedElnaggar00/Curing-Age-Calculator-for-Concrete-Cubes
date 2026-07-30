@@ -1,0 +1,6 @@
+{
+  "name": "حاسبة العينات الخرسانية",
+  "description": "تطبيق حساب تاريخ كسر العينات الخرسانية بعد 7 أو 28 يوم وحساب الأيام بين تاريخين",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

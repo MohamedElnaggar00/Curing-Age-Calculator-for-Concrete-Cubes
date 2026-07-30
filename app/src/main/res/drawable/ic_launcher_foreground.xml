@@ -1,0 +1,25 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Calendar Body -->
+    <path
+        android:fillColor="#FF2563EB"
+        android:pathData="M32,32 h44 a6,6 0 0,1 6,6 v40 a6,6 0 0,1 -6,6 h-44 a6,6 0 0,1 -6,-6 v-40 a6,6 0 0,1 6,-6 z" />
+    <!-- Calendar Header -->
+    <path
+        android:fillColor="#FF0284C7"
+        android:pathData="M32,32 h44 a6,6 0 0,1 6,6 v12 h-56 v-12 a6,6 0 0,1 6,-6 z" />
+    <!-- Calendar Rings -->
+    <path
+        android:fillColor="#FFCBD5E1"
+        android:pathData="M40,26 h4 v10 h-4 z M64,26 h4 v10 h-4 z" />
+    <!-- Concrete Cube Silhouette / Number badge 28 & 7 -->
+    <path
+        android:fillColor="#FFF59E0B"
+        android:pathData="M44,56 h20 v18 h-20 z" />
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M48,60 h12 v3 h-12 z M48,67 h8 v3 h-8 z" />
+</vector>
