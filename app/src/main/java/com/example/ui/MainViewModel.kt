@@ -16,11 +16,13 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import java.time.LocalDate
 
-enum class ConcreteOption(val days: Long, val label: String) {
-    SEVEN_DAYS(7L, "7 أيام"),
-    FOURTEEN_DAYS(14L, "14 يوم"),
-    TWENTY_EIGHT_DAYS(28L, "28 يوم"),
-    FIFTY_SIX_DAYS(56L, "56 يوم")
+import com.example.R
+
+enum class ConcreteOption(val days: Long, val labelResId: Int) {
+    SEVEN_DAYS(7L, R.string.days_7),
+    FOURTEEN_DAYS(14L, R.string.days_14),
+    TWENTY_EIGHT_DAYS(28L, R.string.days_28),
+    FIFTY_SIX_DAYS(56L, R.string.days_56)
 }
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
@@ -121,7 +123,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         viewModelScope.launch {
             repository.insert(newBatch)
             _showSaveDialog.value = false
-            _snackbarMessage.value = "تم حفظ العينة بنجاح في السجل! 💾"
+            _snackbarMessage.value = getApplication<Application>().getString(R.string.batch_saved_success)
             // Reset fields
             _projectName.value = ""
             _elementName.value = ""
@@ -195,7 +197,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     fun deleteBatch(batch: ConcreteBatch) {
         viewModelScope.launch {
             repository.delete(batch)
-            _snackbarMessage.value = "تم حذف العينة من السجل"
+            _snackbarMessage.value = getApplication<Application>().getString(R.string.batch_deleted)
         }
     }
 }

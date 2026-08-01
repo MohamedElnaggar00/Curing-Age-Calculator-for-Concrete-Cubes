@@ -1,5 +1,8 @@
 package com.example.ui.screens
 
+import com.example.R
+import androidx.compose.ui.res.stringResource
+
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -65,10 +68,10 @@ fun DateDiffScreen(viewModel: MainViewModel) {
                         viewModel.setDiffStartDate(localDate)
                     }
                     showStartDatePicker = false
-                }) { Text("موافق") }
+                }) { Text(stringResource(R.string.ok)) }
             },
             dismissButton = {
-                TextButton(onClick = { showStartDatePicker = false }) { Text("إلغاء") }
+                TextButton(onClick = { showStartDatePicker = false }) { Text(stringResource(R.string.cancel)) }
             }
         ) {
             DatePicker(state = datePickerState)
@@ -89,10 +92,10 @@ fun DateDiffScreen(viewModel: MainViewModel) {
                         viewModel.setDiffEndDate(localDate)
                     }
                     showEndDatePicker = false
-                }) { Text("موافق") }
+                }) { Text(stringResource(R.string.ok)) }
             },
             dismissButton = {
-                TextButton(onClick = { showEndDatePicker = false }) { Text("إلغاء") }
+                TextButton(onClick = { showEndDatePicker = false }) { Text(stringResource(R.string.cancel)) }
             }
         ) {
             DatePicker(state = datePickerState)
@@ -119,7 +122,7 @@ fun DateDiffScreen(viewModel: MainViewModel) {
                     horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
                     OneUIPillButton(
-                        text = "اليوم",
+                        text = stringResource(R.string.today),
                         onClick = { viewModel.setDiffStartDate(LocalDate.now()) },
                         isSelected = startDate == LocalDate.now()
                     )
@@ -140,7 +143,7 @@ fun DateDiffScreen(viewModel: MainViewModel) {
                     horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
                     OneUIPillButton(
-                        text = "اليوم",
+                        text = stringResource(R.string.today),
                         onClick = { viewModel.setDiffEndDate(LocalDate.now()) },
                         isSelected = endDate == LocalDate.now()
                     )
@@ -149,8 +152,8 @@ fun DateDiffScreen(viewModel: MainViewModel) {
                 OneUIDivider()
                 OneUIRow(
                     icon = Icons.Default.DateRange,
-                    text = "الفرق بين التاريخين",
-                    subText = "$daysDiff يوم"
+                    text = stringResource(R.string.date_diff_title),
+                    subText = stringResource(R.string.diff_result, daysDiff)
                 )
             }
         }

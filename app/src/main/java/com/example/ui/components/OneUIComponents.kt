@@ -121,7 +121,9 @@ fun OneUIPillButton(
         Text(
             text = text,
             color = if (isSelected) Color.White else OneUITextPrimary,
-            fontWeight = FontWeight.Medium
+            fontWeight = FontWeight.Medium,
+            maxLines = 1,
+            softWrap = false
         )
     }
 }

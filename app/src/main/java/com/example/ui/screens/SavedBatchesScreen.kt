@@ -1,5 +1,8 @@
 package com.example.ui.screens
 
+import com.example.R
+import androidx.compose.ui.res.stringResource
+
 import android.content.Context
 import android.content.Intent
 import androidx.compose.foundation.background
@@ -69,19 +72,19 @@ fun SavedBatchesScreen(viewModel: MainViewModel) {
     if (batchToDelete != null) {
         AlertDialog(
             onDismissRequest = { batchToDelete = null },
-            title = { Text("حذف العينة", color = OneUITextPrimary) },
-            text = { Text("هل أنت متأكد من حذف هذه العينة؟", color = OneUITextPrimary) },
+            title = { Text(stringResource(R.string.delete_batch_title), color = OneUITextPrimary) },
+            text = { Text(stringResource(R.string.delete_batch_msg), color = OneUITextPrimary) },
             confirmButton = {
                 TextButton(onClick = {
                     batchToDelete?.let { viewModel.deleteBatch(it) }
                     batchToDelete = null
                 }) {
-                    Text("حذف", color = OneUIError)
+                    Text(stringResource(R.string.delete), color = OneUIError)
                 }
             },
             dismissButton = {
                 TextButton(onClick = { batchToDelete = null }) {
-                    Text("إلغاء", color = OneUITextPrimary)
+                    Text(stringResource(R.string.cancel), color = OneUITextPrimary)
                 }
             },
             containerColor = OneUIDarkSurface,
@@ -99,7 +102,7 @@ fun SavedBatchesScreen(viewModel: MainViewModel) {
             value = searchQuery,
             onValueChange = { viewModel.setSearchQuery(it) },
             modifier = Modifier.fillMaxWidth(),
-            placeholder = { Text("بحث...", color = Color.Gray) },
+            placeholder = { Text(stringResource(R.string.search_hint), color = Color.Gray) },
             leadingIcon = { Icon(Icons.Default.Search, contentDescription = null, tint = Color.Gray) },
             trailingIcon = {
                 if (searchQuery.isNotEmpty()) {
@@ -127,21 +130,21 @@ fun SavedBatchesScreen(viewModel: MainViewModel) {
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             FilterCard(
-                title = "الكل",
+                title = stringResource(R.string.filter_all),
                 count = batches.size, // Approximation for UI based on current view
                 isSelected = filterStatus == "ALL",
                 onClick = { viewModel.setFilterStatus("ALL") },
                 modifier = Modifier.weight(1f)
             )
             FilterCard(
-                title = "قادمة",
+                title = stringResource(R.string.filter_upcoming),
                 count = batches.count { LocalDate.ofEpochDay(it.castingDateEpochDay).plusDays(28).isAfter(LocalDate.now()) },
                 isSelected = filterStatus == "UPCOMING",
                 onClick = { viewModel.setFilterStatus("UPCOMING") },
                 modifier = Modifier.weight(1f)
             )
             FilterCard(
-                title = "مكتملة",
+                title = stringResource(R.string.filter_completed),
                 count = batches.count { LocalDate.ofEpochDay(it.castingDateEpochDay).plusDays(28).isBefore(LocalDate.now()) },
                 isSelected = filterStatus == "COMPLETED",
                 onClick = { viewModel.setFilterStatus("COMPLETED") },
@@ -152,7 +155,7 @@ fun SavedBatchesScreen(viewModel: MainViewModel) {
         Spacer(modifier = Modifier.height(24.dp))
         
         Text(
-            text = "كل العينات",
+            text = stringResource(R.string.all_batches),
             color = OneUITextPrimary,
             fontWeight = FontWeight.Bold,
             fontSize = 18.sp,
@@ -162,7 +165,7 @@ fun SavedBatchesScreen(viewModel: MainViewModel) {
         if (batches.isEmpty()) {
             Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                 Text(
-                    text = "لا يوجد عينات",
+                    text = stringResource(R.string.no_batches),
                     color = Color.Gray,
                     fontSize = 16.sp
                 )
@@ -239,7 +242,7 @@ fun BatchItem(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = batch.projectName.ifBlank { "عينة غير مسماة" },
+                    text = batch.projectName.ifBlank { stringResource(R.string.unnamed_batch) },
                     color = OneUITextPrimary,
                     fontWeight = FontWeight.Bold,
                     fontSize = 18.sp
@@ -258,13 +261,13 @@ fun BatchItem(
             Spacer(modifier = Modifier.height(8.dp))
             
             Text(
-                text = "تاريخ الصب: ${DateUtils.formatArabicDate(LocalDate.ofEpochDay(batch.castingDateEpochDay))}",
+                text = stringResource(R.string.casting_date_prefix, DateUtils.formatArabicDate(LocalDate.ofEpochDay(batch.castingDateEpochDay))),
                 color = Color.Gray,
                 fontSize = 14.sp
             )
             
             Text(
-                text = "تاريخ الكسر: ${DateUtils.formatArabicDate(LocalDate.ofEpochDay(batch.castingDateEpochDay).plusDays(28))} (28 أيام)",
+                text = stringResource(R.string.breaking_date_prefix, DateUtils.formatArabicDate(LocalDate.ofEpochDay(batch.castingDateEpochDay).plusDays(28)), stringResource(R.string.days_28)),
                 color = MaterialTheme.colorScheme.primary,
                 fontWeight = FontWeight.Bold,
                 fontSize = 14.sp
@@ -278,16 +281,15 @@ private fun shareBatch(context: Context, batch: ConcreteBatch) {
     val targetLocalDate = castingLocalDate.plusDays(28)
     
     val text = buildString {
-        appendLine("بيانات عينة الصب الخرساني")
-        appendLine("-----------------")
-        if (batch.projectName.isNotBlank()) appendLine("المشروع: ${batch.projectName}")
-        appendLine("تاريخ الصب: ${DateUtils.formatArabicDate(castingLocalDate)}")
-        appendLine("تاريخ الكسر: ${DateUtils.formatArabicDate(targetLocalDate)}")
+        appendLine(context.getString(R.string.share_title))
+        if (batch.projectName.isNotBlank()) appendLine(context.getString(R.string.share_project, batch.projectName))
+        appendLine(context.getString(R.string.share_casting, DateUtils.formatArabicDate(castingLocalDate)))
+        appendLine(context.getString(R.string.share_breaking, DateUtils.formatArabicDate(targetLocalDate)))
     }
 
     val intent = Intent(Intent.ACTION_SEND).apply {
         type = "text/plain"
         putExtra(Intent.EXTRA_TEXT, text)
     }
-    context.startActivity(Intent.createChooser(intent, "مشاركة بيانات العينة"))
+    context.startActivity(Intent.createChooser(intent, context.getString(R.string.share_chooser)))
 }

@@ -1,5 +1,8 @@
 package com.example.ui.screens
 
+import com.example.R
+import androidx.compose.ui.res.stringResource
+
 import android.content.Context
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -80,10 +83,10 @@ fun ConcreteCalcScreen(viewModel: MainViewModel) {
                         viewModel.setCastingDate(localDate)
                     }
                     showDatePicker = false
-                }) { Text("موافق") }
+                }) { Text(stringResource(R.string.ok)) }
             },
             dismissButton = {
-                TextButton(onClick = { showDatePicker = false }) { Text("إلغاء") }
+                TextButton(onClick = { showDatePicker = false }) { Text(stringResource(R.string.cancel)) }
             }
         ) {
             DatePicker(state = datePickerState)
@@ -101,7 +104,7 @@ fun ConcreteCalcScreen(viewModel: MainViewModel) {
                 OutlinedTextField(
                     value = projectName,
                     onValueChange = { viewModel.setProjectName(it) },
-                    placeholder = { Text("عنوان المشروع (اختياري)", color = Color.Gray) },
+                    placeholder = { Text(stringResource(R.string.project_title_hint), color = Color.Gray) },
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp),
@@ -121,7 +124,7 @@ fun ConcreteCalcScreen(viewModel: MainViewModel) {
                 // Date Picker Row
                 OneUIRow(
                     icon = Icons.Default.Schedule,
-                    text = castingDate?.let { DateUtils.formatArabicDate(it) } ?: "اختر تاريخ الصب",
+                    text = castingDate?.let { DateUtils.formatArabicDate(it) } ?: stringResource(R.string.select_casting_date),
                     onClick = { showDatePicker = true },
                     trailing = {
                         Switch(
@@ -140,12 +143,12 @@ fun ConcreteCalcScreen(viewModel: MainViewModel) {
                     horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
                     OneUIPillButton(
-                        text = "اليوم",
+                        text = stringResource(R.string.today),
                         onClick = { viewModel.setCastingDate(LocalDate.now()) },
                         isSelected = castingDate == LocalDate.now()
                     )
                     OneUIPillButton(
-                        text = "الأمس",
+                        text = stringResource(R.string.yesterday),
                         onClick = { viewModel.setCastingDate(LocalDate.now().minusDays(1)) },
                         isSelected = castingDate == LocalDate.now().minusDays(1)
                     )
@@ -154,7 +157,7 @@ fun ConcreteCalcScreen(viewModel: MainViewModel) {
                 OneUIDivider()
                 
                 // Test Options
-                OneUIRow(text = "فترة الاختبار")
+                OneUIRow(text = stringResource(R.string.test_period))
                 
                 Row(
                     modifier = Modifier
@@ -164,7 +167,7 @@ fun ConcreteCalcScreen(viewModel: MainViewModel) {
                 ) {
                     ConcreteOption.values().forEach { option ->
                         OneUIPillButton(
-                            text = option.label,
+                            text = stringResource(option.labelResId),
                             onClick = { viewModel.setSelectedOption(option) },
                             isSelected = selectedOption == option
                         )
@@ -176,7 +179,7 @@ fun ConcreteCalcScreen(viewModel: MainViewModel) {
                     // Result
                     OneUIRow(
                         icon = Icons.Default.CalendarToday,
-                        text = "تاريخ الكسر",
+                        text = stringResource(R.string.breaking_date),
                         subText = DateUtils.formatArabicDate(targetDate)
                     )
                 }
@@ -203,13 +206,13 @@ fun ConcreteCalcScreen(viewModel: MainViewModel) {
                     TextButton(
                         onClick = { viewModel.setCastingDate(null); viewModel.setProjectName("") }
                     ) {
-                        Text("إلغاء", color = Color.White, fontWeight = FontWeight.Medium, fontSize = 16.sp)
+                        Text(stringResource(R.string.cancel), color = Color.White, fontWeight = FontWeight.Medium, fontSize = 16.sp)
                     }
                     
                     TextButton(
                         onClick = { viewModel.saveBatch() }
                     ) {
-                        Text("حفظ", color = Color.White, fontWeight = FontWeight.Bold, fontSize = 16.sp)
+                        Text(stringResource(R.string.save), color = Color.White, fontWeight = FontWeight.Bold, fontSize = 16.sp)
                     }
                 }
             }

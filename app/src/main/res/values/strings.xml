@@ -1,3 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">حاسبة العينات</string>
+    <string name="app_name">Concrete Tracker</string>
+    <string name="tab_casting">Casting</string>
+    <string name="tab_diff">Differences</string>
+    <string name="tab_history">History</string>
+    <string name="batch_saved_success">Batch saved successfully! 💾</string>
+    <string name="batch_deleted">Batch deleted</string>
+    <string name="today">Today</string>
+    <string name="yesterday">Yesterday</string>
+    <string name="date_diff_title">Difference</string>
+    <string name="delete_batch_title">Delete Batch</string>
+    <string name="delete_batch_msg">Are you sure you want to delete this batch?</string>
+    <string name="filter_all">All</string>
+    <string name="filter_upcoming">Upcoming</string>
+    <string name="filter_completed">Completed</string>
+    <string name="all_batches">All Batches</string>
+    <string name="no_batches">No batches</string>
+    <string name="search_hint">Search...</string>
+    <string name="casting_date_prefix">Casting Date: %1$s</string>
+    <string name="breaking_date_prefix">Breaking Date: %1$s (%2$s)</string>
+    <string name="days">days</string>
+    <string name="day">day</string>
+    <string name="unnamed_batch">Unnamed batch</string>
+    <string name="share_title">Concrete Batch Data
+-----------------</string>
+    <string name="share_project">Project: %1$s</string>
+    <string name="share_casting">Casting Date: %1$s</string>
+    <string name="share_breaking">Breaking Date: %1$s</string>
+    <string name="share_chooser">Share batch data</string>
+    <string name="project_title_hint">Project Title (Optional)</string>
+    <string name="select_casting_date">Select Casting Date</string>
+    <string name="test_period">Test Period</string>
+    <string name="breaking_date">Breaking Date</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="ok">OK</string>
+    <string name="delete">Delete</string>
+    <string name="start_date">Start Date</string>
+    <string name="end_date">End Date</string>
+    <string name="status_today">Today is the testing day!</string>
+    <string name="status_upcoming">%1$d days remaining</string>
+    <string name="status_overdue">Tested %1$d days ago</string>
+    <string name="days_7">7 Days</string>
+    <string name="days_14">14 Days</string>
+    <string name="days_28">28 Days</string>
+    <string name="days_56">56 Days</string>
+    <string name="diff_result">%1$d days</string>
 </resources>

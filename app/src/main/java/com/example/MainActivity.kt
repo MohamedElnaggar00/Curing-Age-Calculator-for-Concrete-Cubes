@@ -1,5 +1,8 @@
 package com.example
 
+import com.example.R
+import androidx.compose.ui.res.stringResource
+
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -25,7 +28,11 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
+
+
 import androidx.compose.runtime.Composable
+
+
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -121,7 +128,7 @@ fun TopSegmentedBar(selectedTab: Int, onTabSelected: (Int) -> Unit) {
             .background(Color(0xFF252525))
     ) {
         Row(modifier = Modifier.fillMaxSize()) {
-            val tabs = listOf("الصب", "الفروقات", "السجل")
+            val tabs = listOf(stringResource(R.string.tab_casting), stringResource(R.string.tab_diff), stringResource(R.string.tab_history))
             tabs.forEachIndexed { index, title ->
                 val isSelected = selectedTab == index
                 Box(
