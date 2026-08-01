@@ -18,7 +18,7 @@
     <string name="no_batches">No batches</string>
     <string name="search_hint">Search...</string>
     <string name="casting_date_prefix">Casting Date: %1$s</string>
-    <string name="breaking_date_prefix">Breaking Date: %1$s (%2$s)</string>
+    <string name="testing_date_prefix">Testing Date: %1$s (%2$s)</string>
     <string name="days">days</string>
     <string name="day">day</string>
     <string name="unnamed_batch">Unnamed batch</string>
@@ -26,12 +26,12 @@
 -----------------</string>
     <string name="share_project">Project: %1$s</string>
     <string name="share_casting">Casting Date: %1$s</string>
-    <string name="share_breaking">Breaking Date: %1$s</string>
+    <string name="share_breaking">Testing Date: %1$s</string>
     <string name="share_chooser">Share batch data</string>
     <string name="project_title_hint">Project Title (Optional)</string>
     <string name="select_casting_date">Select Casting Date</string>
     <string name="test_period">Test Period</string>
-    <string name="breaking_date">Breaking Date</string>
+    <string name="testing_date">Testing Date</string>
     <string name="cancel">Cancel</string>
     <string name="save">Save</string>
     <string name="ok">OK</string>
@@ -41,9 +41,9 @@
     <string name="status_today">Today is the testing day!</string>
     <string name="status_upcoming">%1$d days remaining</string>
     <string name="status_overdue">Tested %1$d days ago</string>
-    <string name="days_7">7 Days</string>
-    <string name="days_14">14 Days</string>
-    <string name="days_28">28 Days</string>
-    <string name="days_56">56 Days</string>
+    <string name="days_7">&#x200E;7 Days</string>
+    <string name="days_14">&#x200E;14 Days</string>
+    <string name="days_28">&#x200E;28 Days</string>
+    <string name="days_56">&#x200E;56 Days</string>
     <string name="diff_result">%1$d days</string>
 </resources>

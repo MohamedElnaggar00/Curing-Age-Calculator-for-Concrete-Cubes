@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CalendarToday
@@ -182,7 +183,7 @@ fun ConcreteCalcScreen(viewModel: MainViewModel) {
                     // Result
                     OneUIRow(
                         icon = Icons.Default.CalendarToday,
-                        text = stringResource(R.string.breaking_date),
+                        text = stringResource(R.string.testing_date),
                         subText = DateUtils.formatArabicDate(targetDate)
                     )
                 }

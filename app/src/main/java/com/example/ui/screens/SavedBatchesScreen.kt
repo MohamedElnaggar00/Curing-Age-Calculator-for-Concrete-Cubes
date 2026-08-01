@@ -267,7 +267,7 @@ fun BatchItem(
             )
             
             Text(
-                text = stringResource(R.string.breaking_date_prefix, DateUtils.formatArabicDate(LocalDate.ofEpochDay(batch.castingDateEpochDay).plusDays(28)), stringResource(R.string.days_28)),
+                text = stringResource(R.string.testing_date_prefix, DateUtils.formatArabicDate(LocalDate.ofEpochDay(batch.castingDateEpochDay).plusDays(28)), stringResource(R.string.days_28)),
                 color = MaterialTheme.colorScheme.primary,
                 fontWeight = FontWeight.Bold,
                 fontSize = 14.sp

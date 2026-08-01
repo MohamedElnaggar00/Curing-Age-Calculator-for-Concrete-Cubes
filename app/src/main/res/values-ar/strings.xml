@@ -18,7 +18,7 @@
     <string name="no_batches">لا يوجد عينات</string>
     <string name="search_hint">بحث...</string>
     <string name="casting_date_prefix">تاريخ الصب: %1$s</string>
-    <string name="breaking_date_prefix">تاريخ الكسر: %1$s (%2$s)</string>
+    <string name="testing_date_prefix">تاريخ الكسر: %1$s (%2$s)</string>
     <string name="days">أيام</string>
     <string name="day">يوم</string>
     <string name="unnamed_batch">عينة غير مسماة</string>
@@ -31,7 +31,7 @@
     <string name="project_title_hint">عنوان المشروع (اختياري)</string>
     <string name="select_casting_date">اختر تاريخ الصب</string>
     <string name="test_period">فترة الاختبار</string>
-    <string name="breaking_date">تاريخ الكسر</string>
+    <string name="testing_date">تاريخ الكسر</string>
     <string name="cancel">إلغاء</string>
     <string name="save">حفظ</string>
     <string name="ok">موافق</string>

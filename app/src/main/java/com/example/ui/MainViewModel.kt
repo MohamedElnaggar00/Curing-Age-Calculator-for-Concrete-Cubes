@@ -107,8 +107,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun saveBatch() {
-        val proj = _projectName.value.ifBlank { "مشروع جديد" }
-        val elem = _elementName.value.ifBlank { "عينة صب" }
+        val proj = _projectName.value
+        val elem = _elementName.value
         val count = _cubeCount.value.toIntOrNull() ?: 6
 
         val newBatch = ConcreteBatch(
