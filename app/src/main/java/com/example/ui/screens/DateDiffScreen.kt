@@ -124,7 +124,8 @@ fun DateDiffScreen(viewModel: MainViewModel) {
                     OneUIPillButton(
                         text = stringResource(R.string.today),
                         onClick = { viewModel.setDiffStartDate(LocalDate.now()) },
-                        isSelected = startDate == LocalDate.now()
+                        isSelected = startDate == LocalDate.now(),
+                        modifier = Modifier.weight(1f)
                     )
                 }
 
@@ -145,7 +146,8 @@ fun DateDiffScreen(viewModel: MainViewModel) {
                     OneUIPillButton(
                         text = stringResource(R.string.today),
                         onClick = { viewModel.setDiffEndDate(LocalDate.now()) },
-                        isSelected = endDate == LocalDate.now()
+                        isSelected = endDate == LocalDate.now(),
+                        modifier = Modifier.weight(1f)
                     )
                 }
                 

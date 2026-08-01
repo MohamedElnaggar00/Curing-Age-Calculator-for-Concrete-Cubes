@@ -25,6 +25,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.ui.theme.OneUIDarkSurface
 import com.example.ui.theme.OneUIDarkSurfaceVariant
 import com.example.ui.theme.OneUIDivider
@@ -108,20 +109,22 @@ fun OneUIDivider() {
 fun OneUIPillButton(
     text: String,
     onClick: () -> Unit,
-    isSelected: Boolean = false
+    isSelected: Boolean = false,
+    modifier: Modifier = Modifier
 ) {
     Box(
-        modifier = Modifier
+        modifier = modifier
             .clip(RoundedCornerShape(50))
             .background(if (isSelected) MaterialTheme.colorScheme.primary else OneUIDarkSurfaceVariant)
             .clickable { onClick() }
-            .padding(horizontal = 16.dp, vertical = 8.dp),
+            .padding(horizontal = 12.dp, vertical = 8.dp),
         contentAlignment = Alignment.Center
     ) {
         Text(
             text = text,
             color = if (isSelected) Color.White else OneUITextPrimary,
             fontWeight = FontWeight.Medium,
+            fontSize = 13.sp,
             maxLines = 1,
             softWrap = false
         )

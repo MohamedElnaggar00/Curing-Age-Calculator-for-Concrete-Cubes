@@ -145,12 +145,14 @@ fun ConcreteCalcScreen(viewModel: MainViewModel) {
                     OneUIPillButton(
                         text = stringResource(R.string.today),
                         onClick = { viewModel.setCastingDate(LocalDate.now()) },
-                        isSelected = castingDate == LocalDate.now()
+                        isSelected = castingDate == LocalDate.now(),
+                        modifier = Modifier.weight(1f)
                     )
                     OneUIPillButton(
                         text = stringResource(R.string.yesterday),
                         onClick = { viewModel.setCastingDate(LocalDate.now().minusDays(1)) },
-                        isSelected = castingDate == LocalDate.now().minusDays(1)
+                        isSelected = castingDate == LocalDate.now().minusDays(1),
+                        modifier = Modifier.weight(1f)
                     )
                 }
 
@@ -169,7 +171,8 @@ fun ConcreteCalcScreen(viewModel: MainViewModel) {
                         OneUIPillButton(
                             text = stringResource(option.labelResId),
                             onClick = { viewModel.setSelectedOption(option) },
-                            isSelected = selectedOption == option
+                            isSelected = selectedOption == option,
+                            modifier = Modifier.weight(1f)
                         )
                     }
                 }
