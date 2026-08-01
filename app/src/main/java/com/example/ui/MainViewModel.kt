@@ -16,11 +16,11 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import java.time.LocalDate
 
-enum class ConcreteOption(val days: Long, val label: String, val subtitle: String, val expectedStrength: String) {
-    SEVEN_DAYS(7L, "كسر بعد 7 أيام", "اختبار القوة المبكرة للخرسانة", "~ 65% - 70% من المقاومة"),
-    TWENTY_EIGHT_DAYS(28L, "كسر بعد 28 يوم", "اختبار القوة النهائية القياسية", "100% من المقاومة التصميمية"),
-    FIFTY_SIX_DAYS(56L, "كسر بعد 56 يوم", "اختبار العناصر الخاصة والأسمنت البطيء", "~ 110% - 115% من المقاومة"),
-    CUSTOM(14L, "مخصص (عدد أيام آخر)", "تحديد أي عدد أيام مثل 3 أو 14 أو 56 يوم", "مقاومة متغيرة")
+enum class ConcreteOption(val days: Long, val label: String) {
+    SEVEN_DAYS(7L, "7 أيام"),
+    FOURTEEN_DAYS(14L, "14 يوم"),
+    TWENTY_EIGHT_DAYS(28L, "28 يوم"),
+    FIFTY_SIX_DAYS(56L, "56 يوم")
 }
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
@@ -41,10 +41,10 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     // --- Concrete Casting Mode State ---
-    private val _castingDate = MutableStateFlow(LocalDate.now())
-    val castingDate: StateFlow<LocalDate> = _castingDate.asStateFlow()
+    private val _castingDate = MutableStateFlow<LocalDate?>(null)
+    val castingDate: StateFlow<LocalDate?> = _castingDate.asStateFlow()
 
-    private val _selectedOption = MutableStateFlow(ConcreteOption.SEVEN_DAYS)
+    private val _selectedOption = MutableStateFlow(ConcreteOption.TWENTY_EIGHT_DAYS)
     val selectedOption: StateFlow<ConcreteOption> = _selectedOption.asStateFlow()
 
     private val _customDaysInput = MutableStateFlow("14")
@@ -72,7 +72,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val _snackbarMessage = MutableStateFlow<String?>(null)
     val snackbarMessage: StateFlow<String?> = _snackbarMessage.asStateFlow()
 
-    fun setCastingDate(date: LocalDate) {
+    fun setCastingDate(date: LocalDate?) {
         _castingDate.value = date
     }
 
@@ -112,7 +112,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         val newBatch = ConcreteBatch(
             projectName = proj,
             elementName = elem,
-            castingDateEpochDay = _castingDate.value.toEpochDay(),
+            castingDateEpochDay = _castingDate.value?.toEpochDay() ?: LocalDate.now().toEpochDay(),
             concreteGrade = _concreteGrade.value.ifBlank { "C30" },
             cubeCount = count,
             notes = _notes.value
